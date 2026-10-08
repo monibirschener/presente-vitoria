@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um presente para Vitória ♡</title>
+<style>
+:root{--bg:#e5f0e5;--mint:#b9d9b9;--green:#34784b;--deep:#214b31;--cream:#fffdf7;--line:#7ba889;--text:#274232}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}
+body:before{content:"";position:fixed;inset:12px;border:1px dashed #7ba889;border-radius:22px;pointer-events:none;z-index:5}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:24px 16px 14px}
+.nav button,.btn{border:1px solid var(--line);border-radius:999px;background:var(--cream);color:var(--deep);padding:10px 16px;transition:.2s}
+.nav button:hover,.btn:hover{background:var(--mint);transform:translateY(-1px)}
+.nav button.active{background:var(--green);color:white}
+.marquee{overflow:hidden;background:var(--green);color:#fffdf7;white-space:nowrap;padding:10px 0;font-family:Arial,sans-serif;font-size:.9rem;letter-spacing:.04em}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 19s linear infinite}
+@keyframes scroll{to{transform:translateX(-100%)}}
+main{max-width:900px;margin:auto;padding:24px 22px 48px}
+.page{display:none;animation:fade .35s ease}.page.active{display:block}
+@keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{text-align:center;padding:42px 12px 25px}
+.eyebrow{font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--green)}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;color:var(--deep);font-weight:normal;margin:18px auto;max-width:760px}
+h2{font-weight:normal;color:var(--deep);font-size:clamp(1.7rem,4vw,2.5rem)}
+p{line-height:1.75}
+.hero p{max-width:620px;margin:0 auto;font-size:1.08rem}
+.decor{font-size:1.5rem;letter-spacing:.6rem;margin:18px}
+.panel{background:var(--cream);border:1px solid #c3d8c4;border-radius:24px;padding:clamp(22px,5vw,42px);margin:22px auto;box-shadow:0 12px 32px #214b310d}
+.music-layout{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
+.music-copy{max-width:700px}
+.vinyl-wrap{display:flex;justify-content:center;align-items:center;min-height:300px;width:100%;position:relative;overflow:hidden}
+.turntable{width:min(370px,86vw);height:250px;background:linear-gradient(145deg,#729b72,#34784b 60%,#245b39);border:5px solid #d4dfc9;border-radius:16px 16px 28px 28px;box-shadow:0 14px 22px #203c2b30;position:relative;display:flex;align-items:center;justify-content:flex-start;padding-left:18px;transform:perspective(600px) rotateX(3deg)}
+.turntable:before{content:"";position:absolute;left:8px;right:8px;top:-70px;height:72px;border:3px solid #b7c5ad;background:linear-gradient(180deg,#ffffff66,#e6eddd25);border-radius:8px 8px 2px 2px;transform:skewX(-3deg);opacity:.85}
+.vinyl{width:min(215px,56vw);aspect-ratio:1;border-radius:50%;border:7px solid #202923;background:repeating-radial-gradient(circle at center,#252b27 0 3px,#3c433e 4px 6px,#222923 7px 9px);box-shadow:0 8px 14px #203c2b45;display:grid;place-items:center;position:relative;transition:transform .3s;padding:0}
+.vinyl:after{content:"";position:absolute;inset:18%;border:1px solid #69766b;border-radius:50%;pointer-events:none}
+.vinyl.playing{animation:spin 2.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.label{width:34%;aspect-ratio:1;border-radius:50%;background:#b9d9b9;border:4px solid #dce8d5;display:grid;place-items:center;color:var(--green);font-size:1.2rem;z-index:1}
+.tonearm{position:absolute;width:94px;height:8px;background:linear-gradient(#d8d9c9,#7b8175);right:33px;top:72px;border-radius:10px;transform:rotate(43deg);transform-origin:right center;box-shadow:0 2px 3px #1e3c2c55}
+.tonearm:before{content:"";position:absolute;right:-8px;top:-10px;width:24px;height:24px;border:5px solid #b8beb0;border-radius:50%;background:#424d42}
+.tonearm:after{content:"";position:absolute;left:-3px;top:-3px;width:16px;height:14px;background:#d7d9ca;border-radius:3px}
+.turntable-controls{position:absolute;right:12px;bottom:20px;display:flex;gap:8px;align-items:center}
+.turntable-controls span{display:block;width:13px;height:13px;border-radius:50%;background:#d4d5c4;border:2px solid #59695a}
+.music-confetti{position:absolute;inset:0;pointer-events:none}
+.small{font-family:Arial,sans-serif;font-size:.85rem;color:#607767}
+footer{text-align:center;font-size:.9rem;line-height:1.7;max-width:680px;margin:28px auto 10px;color:#526e5a}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.primary{background:var(--green)!important;color:white!important;border-color:var(--green)!important}
+.next{display:flex;justify-content:center;margin:28px 0}
+.note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:760px;margin:24px auto}
+.note{min-height:150px;border:1px dashed #7ba889;border-radius:16px;background:linear-gradient(145deg,#f8fcf5,#dcebd7);color:var(--deep);padding:15px 12px;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column;box-shadow:0 5px 12px #214b3110;transition:.2s}
+.note:hover{transform:translateY(-2px)}.note .front{line-height:1.5}.note .inside{display:none;line-height:1.65}.note.open{background:#fffdf7;border-style:solid}.note.open .front{display:none}.note.open .inside{display:block}.note:last-child{grid-column:2}
+.envelope-stage{display:flex;justify-content:center;align-items:center;padding:28px 0 12px;perspective:900px;min-height:220px}.envelope{position:relative;width:min(270px,78vw);height:170px;border:0;background:transparent;padding:0;filter:drop-shadow(0 9px 10px #214b3120);transition:transform .2s}.envelope:hover{transform:translateY(-3px)}.env-back{position:absolute;inset:0;background:#d9e9d2;border:2px solid #91b18f;border-radius:5px}.env-paper{position:absolute;left:8%;right:8%;bottom:8px;height:86%;background:#fffdf7;border:1px solid #c4d8bd;z-index:1;transition:transform .8s cubic-bezier(.2,.8,.2,1),height .8s;display:flex;align-items:flex-start;justify-content:center;padding:15px 8px;color:#41694b;font-size:1rem}.env-left,.env-right,.env-bottom,.env-flap{position:absolute;inset:0;z-index:2}.env-left{background:#edf5e9;clip-path:polygon(0 0,52% 50%,0 100%);border-radius:4px}.env-right{background:#dcebd7;clip-path:polygon(100% 0,48% 50%,100% 100%)}.env-bottom{background:#c8dfc1;clip-path:polygon(0 100%,50% 45%,100% 100%);border-radius:0 0 5px 5px}.env-flap{background:#e5f0df;clip-path:polygon(0 0,100% 0,50% 57%);transform-origin:top;transition:transform .65s;backface-visibility:hidden}.env-seal{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#34784b;color:white;display:grid;place-items:center;border:2px solid #d6e7ce;transition:opacity .3s}.envelope.opened .env-flap{transform:rotateX(180deg);z-index:0}.envelope.opened .env-paper{height:220px;transform:translateY(-170px);z-index:5;box-shadow:0 8px 20px #214b3120}.envelope.opened .env-seal{opacity:0}.envelope.opened{margin-bottom:170px}.letter-reveal{display:none;max-width:700px;margin:10px auto 0;animation:fade .5s ease}.letter-reveal.show{display:block}.letter-reveal .letter{white-space:normal}.letter-reveal .letter p{margin:0 0 15px}.letter-hint{font-size:.9rem;color:#607767;text-align:center}
+.letter{max-width:680px;margin:auto;background:#fffdf7;border-radius:4px;padding:clamp(24px,6vw,54px);box-shadow:0 8px 26px #214b3110;border:1px solid #d6e3d2}
+.letter p{font-size:1.05rem}
+input.answer{width:100%;max-width:360px;padding:12px 14px;border:1px solid #a7c5ac;border-radius:12px;background:#fffdf7;color:var(--text);text-transform:uppercase}
+.cross-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.9fr);gap:20px;align-items:start;margin-top:22px}
+.cross-board-wrap{overflow:auto;max-width:100%;padding:12px;background:#edf5e9;border:1px dashed var(--line);border-radius:16px}
+.cross-board{display:grid;gap:2px;width:max-content;margin:auto}
+.cross-cell{width:clamp(24px,3.3vw,31px);height:clamp(24px,3.3vw,31px);position:relative;background:#fffdf7;border:1px solid #8bb194;border-radius:3px;box-shadow:inset 0 0 0 1px #e0eadb}
+.cross-cell.block{background:transparent;border-color:transparent;box-shadow:none}
+.cross-cell input{width:100%;height:100%;min-width:0;padding:0;border:0;background:transparent;color:var(--deep);text-align:center;text-transform:uppercase;font-size:clamp(.82rem,2vw,1.05rem);font-weight:bold;outline:none;border-radius:3px}
+.cross-cell .num{position:absolute;left:2px;top:0;font:9px Arial,sans-serif;color:#527b5c;pointer-events:none;z-index:1}
+.cross-cell.selected{background:#d3e8c8;border:2px solid #34784b;box-shadow:0 0 0 2px #b9d9b9}
+.cross-cell input:focus{background:#d3e8c8;box-shadow:inset 0 0 0 2px #34784b}
+.clue-panel{background:#f7faF2;border:1px solid #c9ddc8;border-radius:16px;padding:16px}
+.clue-panel h3{color:var(--deep);margin:0 0 12px;font-weight:normal}
+.clue-list{display:grid;gap:8px}
+.clue{width:100%;text-align:left;display:flex;gap:9px;align-items:flex-start;border:1px solid #d5e4d2;background:#fffdf7;border-radius:10px;padding:9px;color:var(--text);line-height:1.45;font-size:.9rem}
+.clue b{display:grid;place-items:center;flex:0 0 24px;height:24px;border-radius:50%;background:#34784b;color:white;font-size:.8rem}
+.clue.active{border-color:#34784b;background:#e4f0dc;box-shadow:0 0 0 2px #b9d9b9}
+.cross-help{font-size:.86rem;color:#607767;margin:10px 0 0;line-height:1.5}
+@media(max-width:720px){.cross-layout{grid-template-columns:1fr}.cross-cell{width:27px;height:27px}.clue-panel{padding:12px}.note-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.note:last-child{grid-column:1/-1;max-width:260px;width:100%;justify-self:center}}
+.secret{display:none;text-align:center;margin-top:24px;padding:20px;background:#e5f0e5;border-radius:18px;color:var(--deep)}
+.secret.show{display:block}
+.confetti{position:fixed;top:-20px;width:9px;height:13px;z-index:10;pointer-events:none;animation:fall 3.5s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+@media(max-width:650px){.music-layout{grid-template-columns:1fr;gap:8px}.hero{padding-top:28px}.nav{gap:7px}.nav button{padding:9px 12px}}
+
+/* Visual pass based on the four approved reference layouts */
+:root{--bg:#e9f1df;--mint:#d7e7c9;--green:#2f7048;--deep:#174d35;--cream:#f8f8e9;--line:#6d9b77;--text:#214b36}
+body{background:radial-gradient(circle at 12px 12px,#8bb88c 1.5px,transparent 2px) 0 0/38px 38px,linear-gradient(135deg,#e4efd9,#f5f6e8 48%,#e4efd9);font-family:'Trebuchet MS','Comic Sans MS',Georgia,serif;color:var(--text);padding:0 0 28px}
+body:before{inset:12px;border:2px dashed #6f9e7b;border-radius:20px;z-index:9}
+.browser-chrome{height:26px;max-width:980px;margin:20px auto 0;padding:0 28px;display:flex;gap:10px;align-items:center}
+.browser-chrome i{display:block;width:15px;height:15px;border-radius:50%;background:#4e8a60;border:1px solid #2f7048}
+.browser-chrome i:nth-child(2){background:#8fb68b}.browser-chrome i:nth-child(3){background:#b6cda4}
+.nav{max-width:940px;margin:0 auto;padding:18px 18px 16px;background:#d4e4c4;border:1px solid #bfd4b6;border-radius:18px;gap:18px;position:relative;z-index:1}
+.nav button{min-width:58px;min-height:48px;padding:9px 15px;border-radius:15px;font-size:1.15rem;box-shadow:0 2px 0 #9dbb99}
+.nav button.active{background:var(--green);color:#fffdf2}
+.marquee{max-width:940px;margin:14px auto 0;background:#f5f6e9;color:var(--deep);border:1px dashed #7da687;border-radius:10px;padding:12px 0;font-family:'Trebuchet MS','Comic Sans MS',Georgia,serif;font-size:1rem;letter-spacing:0}
+.marquee span{animation-duration:24s}
+main{max-width:940px;margin:0 auto;padding:16px 18px 26px;background:#f8f8e9d9;border:1px dashed #7da687;border-top:0;border-radius:0 0 18px 18px}
+.page{display:none}.page.active{display:block}
+.hero{position:relative;text-align:center;margin:0 auto 18px;padding:34px 18px 28px;background:linear-gradient(135deg,#cfe2b9,#e1edcc 50%,#c9dfb6);border:1px solid #9cbd91;border-radius:17px;box-shadow:inset 0 0 28px #ffffff40;overflow:hidden}
+.hero:before{content:'♡   ✦';position:absolute;left:20px;top:16px;font-size:1.3rem;color:var(--green);letter-spacing:8px}
+.hero:after{content:'🎂   🎉';position:absolute;right:18px;bottom:13px;font-size:1.65rem;opacity:.92}
+.hero .eyebrow{display:none}.hero .decor{display:none}
+h1{font-family:'Trebuchet MS','Comic Sans MS',Georgia,serif;font-size:clamp(2rem,5vw,3.45rem);line-height:1.13;color:var(--deep);font-weight:700;margin:6px auto 12px;max-width:800px;letter-spacing:-.025em}
+.hero p{max-width:650px;margin:0 auto;font-size:clamp(1rem,2.5vw,1.3rem);line-height:1.5}
+h2{font-family:'Trebuchet MS','Comic Sans MS',Georgia,serif;color:var(--deep);font-size:clamp(1.6rem,3.5vw,2.25rem);font-weight:700}
+.panel{background:linear-gradient(140deg,#f7f8e9,#f0f4e3);border:1px solid #c3d8b8;border-radius:17px;padding:clamp(18px,4vw,36px);margin:18px auto;box-shadow:none;position:relative}
+.panel:after{content:'✧';position:absolute;right:22px;top:14px;color:#6b9c74;font-size:1.4rem;pointer-events:none}
+.music-layout{gap:12px}.music-copy{max-width:720px;font-size:1.08rem}.music-copy p{margin:10px auto;line-height:1.6}
+.vinyl-wrap{min-height:300px;margin:12px auto 4px;overflow:visible}
+.turntable{width:min(360px,80vw);height:230px;border-radius:8px 8px 22px 22px;box-shadow:0 15px 20px #214b3125}
+.turntable:before{left:8px;right:8px;top:-65px;height:66px;background:linear-gradient(180deg,#ffffff88,#dbe8cf55);border-color:#b6c8ab}
+.vinyl{width:min(210px,53vw)}
+.btn{background:#f9f9ec;border:1.5px solid #5c916b;color:var(--deep);padding:12px 20px;font-weight:600;box-shadow:0 2px 0 #c4d8b9}
+.btn.primary{background:var(--green)!important;color:#fffdf2!important;border-color:var(--green)!important}
+.next{margin:28px 0 8px}.next .btn{font-size:1rem;padding:13px 22px}
+footer{max-width:900px;margin:24px auto 6px;padding:20px 14px 10px;border-top:1px dashed #9cbd91;color:#456c50;font-size:.9rem}
+/* Letter page: title and envelope are centered, with the letter hidden until opened */
+#letter .panel{padding-top:clamp(34px,6vw,58px);padding-bottom:clamp(34px,6vw,58px);min-height:570px;display:flex;flex-direction:column;justify-content:center}
+#letter .panel h2{margin:0 auto 8px;position:relative}
+#letter .panel>p{margin:8px auto 12px}
+.envelope-stage{min-height:300px;padding:32px 0 10px}
+.envelope{width:min(340px,76vw);height:210px}
+.env-back{background:#789c72;border-color:#527d5d;border-radius:4px}
+.env-paper{background:#fffdf2;border-color:#d7dcc5;color:#315b3e;font-size:1rem;line-height:1.5;box-shadow:0 3px 12px #254d3220}
+.env-left{background:#e9efdc}.env-right{background:#d8e6ca}.env-bottom{background:#c5dcb8}.env-flap{background:#f6f4e5}
+.env-seal{width:44px;height:44px;background:#39754a;border-color:#e2edcf;font-size:1.2rem}
+.envelope.opened .env-paper{height:250px;transform:translateY(-205px)}.envelope.opened{margin-bottom:205px}
+.letter{background:#fffdf2;border:1px solid #cbdcbd;border-radius:7px;box-shadow:0 7px 20px #214b3110}
+/* Envelopes for the seven hidden vouchers */
+.note-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:780px;margin:32px auto 18px}
+.note{min-height:160px;border:1px solid #a8c59b;border-radius:9px;background:linear-gradient(145deg,#fffdf2 0%,#e5efd9 100%);color:var(--deep);padding:15px 12px;box-shadow:0 5px 10px #214b3110;position:relative;overflow:hidden}
+.note:before{content:'';position:absolute;inset:0;background:linear-gradient(145deg,transparent 48%,#c5dcb8 49%,transparent 51%),linear-gradient(35deg,transparent 48%,#d7e6cb 49%,transparent 51%);opacity:.6;pointer-events:none}
+.note .front,.note .inside{position:relative;z-index:1;line-height:1.6}.note .front{font-size:1.02rem}.note .front:first-letter{font-size:1.3rem}
+.note .front small{display:inline-block;background:#eef3e3;border-radius:20px;padding:2px 8px;margin-top:4px}
+.note.open{background:#f8f8e9;border-color:#4f8b60;box-shadow:0 0 0 2px #c8dfbc}
+.note:last-child{grid-column:2}
+/* Crossword panel and highlighted answer cells */
+#crossword>.panel{padding:clamp(16px,3vw,28px)}
+#crossword>.panel>p{text-align:center;max-width:820px;margin:10px auto;line-height:1.65}
+.cross-layout{grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;margin-top:22px}
+.cross-board-wrap{background:#f3f6e8;border:1px dashed #8eaf87;border-radius:13px;padding:12px;overflow:auto}
+.cross-cell{border-radius:2px;background:#fffef5;border:1px solid #8aa98a;box-shadow:none}
+.cross-cell .num{font-weight:bold;color:#245f3d;font-size:10px;top:0;left:2px}
+.cross-cell.selected{background:#c6e2b8;border:2px solid #2f7048;box-shadow:0 0 0 2px #a9d09b}
+.cross-cell input:focus{background:#c6e2b8;box-shadow:inset 0 0 0 2px #2f7048}
+.clue-panel{background:#f6f7e9;border:1px solid #c6d9b9;border-radius:14px;padding:14px}
+.clue-panel h3{text-align:center;background:#2f7048;color:#fffdf2;border-radius:20px;padding:7px 15px;display:table;margin:0 auto 14px}
+.clue-list{gap:7px}.clue{border-radius:8px;padding:8px;background:#fffef5;font-size:.88rem}.clue b{background:#2f7048;flex-basis:24px;height:24px}.clue.active{background:#e0edcf;border-color:#2f7048}
+.secret{display:none;background:#e4efd5;border:1px dashed #729b75;border-radius:12px;padding:24px;color:var(--deep);margin-top:24px}.secret.show{display:block}
+@media(max-width:720px){
+ .browser-chrome{margin-top:16px;padding:0 24px}.nav{margin:0 14px;padding:12px 8px;gap:8px}.nav button{min-width:46px;min-height:44px;padding:8px 10px;font-size:1rem;border-radius:13px}
+ .marquee{margin:12px 14px 0;padding:10px 0;font-size:.9rem}main{margin:0 14px;padding:12px 10px 22px}
+ .hero{padding:30px 14px 28px;margin-bottom:14px}.hero:before{left:12px;top:8px;font-size:1rem}.hero:after{right:8px;bottom:7px;font-size:1.2rem}
+ .hero p{font-size:1rem}.panel{padding:20px 14px}.music-copy{font-size:1rem}.vinyl-wrap{min-height:265px}.turntable{height:190px;width:min(320px,78vw);padding-left:12px}.turntable:before{top:-53px;height:54px}.vinyl{width:min(180px,50vw)}.tonearm{right:26px;top:54px;transform:scale(.85) rotate(43deg)}
+ #letter .panel{min-height:500px}.envelope-stage{min-height:250px}.envelope{height:170px}.envelope.opened .env-paper{height:230px;transform:translateY(-170px)}.envelope.opened{margin-bottom:170px}
+ .note-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.note{min-height:150px;padding:12px 8px}.note:last-child{grid-column:1/-1;max-width:260px;width:100%;justify-self:center}
+ .cross-layout{grid-template-columns:1fr}.cross-cell{width:clamp(23px,5.8vw,27px);height:clamp(23px,5.8vw,27px)}.cross-board-wrap{padding:8px}.clue-panel{padding:12px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+<div class="browser-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav class="nav" aria-label="Navegação principal">
+<button class="active" data-page="home" aria-label="Início e música">♫ Música</button>
+<button data-page="letter" aria-label="Cartinha">✉ Cartinha</button>
+<button data-page="notes" aria-label="Bilhetinhos">♡ Bilhetinhos</button>
+<button data-page="crossword" aria-label="Palavra cruzada">▦ Palavra cruzada</button>
+</nav>
+<div class="marquee"><span>Um site especial de aniversário para uma pessoinha tão especial quanto! :) &nbsp; ✿ &nbsp; Um site especial de aniversário para uma pessoinha tão especial quanto! :) &nbsp; ✿ &nbsp;</span></div>
+<main>
+<section class="page active" id="home">
+<div class="hero">
+<div class="eyebrow">um presentinho feito à mão ♡</div>
+<div class="decor">✿ 🎂 ✿</div>
+<h1>Feliz aniversário, Vitória!</h1>
+<p>Você merece isso e muito mais, te desejo toda a felicidade do mundo!</p>
+</div>
+<div class="panel">
+<div class="music-layout">
+<div class="music-copy">
+<p>Mas antes de explorar o site, todo aniversário precisa de uma trilha sonora e eu escolhi uma música para acompanhar, animada e no tema.</p>
+<p><strong>♫ Atenção: essa música pode aumentar perigosamente a vontade de comemorar. 💃 ♫</strong></p>
+<p>Clique no vinil ou no botão abaixo para tocar a música.</p>
+</div>
+<div class="vinyl-wrap">
+<div class="turntable">
+<button class="vinyl" id="vinyl" aria-label="Tocar música e soltar confetes"><span class="label">✿</span></button>
+<span class="tonearm" aria-hidden="true"></span>
+<div class="turntable-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="actions"><button class="btn primary" id="play">▶ Tocar música</button><button class="btn" id="pause" disabled>✕ Fechar player</button></div>
+<div id="music-player" style="width:min(560px,100%);display:none">
+<iframe id="music-frame" title="Parabéns — Pabllo Vittar e Psirico no Spotify" width="100%" height="152" style="border:0;border-radius:14px" src="about:blank" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" allowfullscreen></iframe>
+</div>
+<p class="small" id="music-status" aria-live="polite">A música abre no player oficial do Spotify, aqui na página. 🎶</p>
+</div>
+</div>
+<footer>Este presente foi criado por alguém que poderia simplesmente ter mandado “feliz aniversário”, mas tem uma tendência preocupante a inventar presentes mirabolantes. 🎀</footer>
+<div class="next"><button class="btn primary" data-go="letter">Agora, vamos para a cartinha de aniversário? 💌 →</button></div>
+</section>
+
+<section class="page" id="letter">
+<div class="hero"><h1>Feliz aniversário, Vitória!</h1><p>Você merece isso e muito mais,<br> te desejo toda a felicidade do mundo!</p></div>
+<div class="panel" style="text-align:center">
+<h2 style="margin-top:0">Uma cartinha especial</h2>
+<p>Clique no envelope lacrado abaixo para abrir seu presente.</p>
+<div class="envelope-stage"><button class="envelope" id="envelope" aria-label="Abrir cartinha de aniversário"><span class="env-back"></span><span class="env-paper">Uma cartinha feita com carinho… 💌</span><span class="env-left"></span><span class="env-right"></span><span class="env-bottom"></span><span class="env-flap"></span><span class="env-seal">♡</span></button></div>
+<p class="letter-hint" id="letter-hint">Um pequeno presente dentro de outro presente. 💚</p>
+<div class="letter-reveal" id="letter-reveal"><article class="letter" style="text-align:left">
+<p>Oie, meu bem!</p>
+<p>Primeiro, eu queria dizer que foi uma surpresa muito boa essa oportunidade em te conhecer melhor. Segundo, que pode parecer meio louco isso aqui mas eu sou uma pessoa que gosto de inventar surpresinhas e presentes e queria fazer algo especial para te dar (já que o que eu queria dar no momento não posso, e estou falando de um abraço de aniversário kkkk), e espero muito que você curta!</p>
+<p>Terceiro, queria te parabenizar e desejar que seu dia seja lindo, como você! Que você aproveite bastante, rodeada de amor e carinho como merece!!</p>
+<p>Te desejo as melhores coisas desse mundo, que não te falte vontade e coragem para colocar seus planos e projetos em prática, e ir atrás dos seus sonhos! Desejo muitas fanfics, muitos livros de mistérios, muitas músicas a serem descobertas e apreciadas, muitas viagens (ansiosa pra SP), muita disposição de viver, e todas aquelas coisas de amor, saúde, felicidade...</p>
+<p>Que nada nesse mundo mude a sua essência, você é uma garota muito especial!</p>
+<p>Curta muito seu dia! 🎉</p>
+</article></div>
+</div>
+<div class="next"><button class="btn primary" data-go="notes">Agora, vamos aos bilhetinhos? 💌 →</button></div>
+<footer>Feito com todo o carinho do mundo especialmente para a Vitória ♥</footer>
+</section>
+
+<section class="page" id="notes">
+<div class="hero"><h1>Feliz aniversário, Vitória!</h1><p>Você merece isso e muito mais,<br> te desejo toda a felicidade do mundo!</p></div>
+<div class="panel">
+<h2 style="text-align:center;margin-top:0">Vale presentes para quando a gente se ver.</h2>
+<p style="text-align:center">Clique nos bilhetes selados para abrir e resgatar seus presentes!</p>
+<div class="note-grid">
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #01</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>VALE 1 DOCE 🍫</strong><br>Direito a escolher o doce que quiser.</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #02</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>VALE 1 LIVRO 📚</strong><br>Você escolhe o livro. Eu pago.<br>Depois você me conta se era bom.<br>Assim eu ganho uma recomendação e uma desculpa pra continuar conversando.</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #03</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>VALE 1 BEIJO 💋</strong><br>Resgatável presencialmente.<br>Validade: até segunda ordem.<br>Uso: ilimitado.</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #04</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>VALE 1 ABRAÇO 🫂 (OU CAFUNÉ)</strong><br>Daqueles demorados.<br>Porque aparentemente é impossível por mensagem, pois ainda não inventaram.</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #05</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>VALE 1 MASSAGEM 💆‍♀️</strong><br>Duração: a combinar.<br>Local: a combinar.<br>Profissional: questionável.<br>Intenções: sob investigação. 👀</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #06</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>🧠 Vale uma curiosidade aleatória</strong><br>Direito a uma informação inútil sobre mim.<br>Provavelmente não vai melhorar sua vida, mas você vai saber.</span></button>
+<button class="note"><span class="front">✉<br><strong>Bilhetinho #07</strong><br><small>Clique para abrir ♡</small></span><span class="inside"><strong>Caixinha misteriosa 👀</strong><br>Vale alguma coisa que ainda não posso contar, ou um pedido seu que eu não poderia recusar.<br>Ele depende de uma coisa: a gente se encontrar.<br>Quando acontecer, a gente descobre. 👀</span></button>
+</div></div>
+<div class="next"><button class="btn primary" data-go="crossword">Última surpresa: a palavra cruzada! 🧩 →</button></div>
+<footer>Feito com todo o carinho do mundo especialmente para a Vitória ♥</footer>
+</section>
+
+<section class="page" id="crossword">
+<div class="hero"><h1>Feliz aniversário, Vitória!</h1><p>Você merece isso e muito mais,<br> te desejo toda a felicidade do mundo!</p></div>
+<div class="panel">
+<p>Para finalizar, pensei nesse jogo de palavra cruzada em inspiração na sua fanfic favorita (nossa). Ela está baseada em curiosidades que descobri sobre você nesse nosso processo de conhecimento, e também em brincadeiras nossas. Espero que goste e se divirta!</p>
+<p><strong>P.s.:</strong> Tem uma mensagem final ao completá-la. 💌</p>
+<div class="cross-layout">
+ <div>
+  <h2 style="text-align:center;margin-top:0">Palavra cruzada 🧩</h2>
+  <p class="cross-help">Toque em uma dica para destacar a palavra. Depois, preencha uma letra por casa. No celular, use as setas do teclado para se movimentar entre as casas.</p>
+  <div class="cross-board-wrap"><div class="cross-board" id="cross-board" aria-label="Grade de palavras cruzadas"></div></div>
+  <div class="actions"><button class="btn primary" id="check">Conferir respostas</button><button class="btn" id="reset">Limpar</button></div>
+  <div id="feedback" class="small" aria-live="polite" style="text-align:center;margin-top:16px"></div>
+ </div>
+ <aside class="clue-panel"><h3>✦ Dicas ✦</h3><div class="clue-list" id="clue-list"></div></aside>
+</div>
+<div id="secret" class="secret"><div class="decor">🎉 ✦ 🎉</div><h2>Estou adorando te conhecer 💚</h2><p>Esse era o recadinho escondido. Feliz aniversário mais uma vez, Vitória! ♡</p></div>
+</div>
+<div class="next"><button class="btn" data-go="home">↶ Voltar ao início</button></div>
+<footer>Feito com todo o carinho do mundo especialmente para a Vitória ♥</footer>
+</section>
+</main>
+<script>
+const pages=[...document.querySelectorAll('.page')];
+function showPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-page],[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page||b.dataset.go)));
+document.querySelectorAll('.note').forEach(n=>n.addEventListener('click',()=>n.classList.toggle('open')));
+document.getElementById('envelope').addEventListener('click',()=>{const e=document.getElementById('envelope');const opened=e.classList.toggle('opened');document.getElementById('letter-reveal').classList.toggle('show',opened);document.getElementById('letter-hint').textContent=opened?'Surpresa! Uma cartinha feita especialmente para você. 💚':'Um pequeno presente dentro de outro presente. 💚';if(opened){setTimeout(()=>document.getElementById('letter-reveal').scrollIntoView({behavior:'smooth',block:'nearest'}),350);confetti();}});
+let musicWindow=null;
+function confetti(){const colors=['#34784b','#d9b75e','#fffdf7','#e6a5a5','#b9d9b9'];for(let i=0;i<65;i++){const c=document.createElement('i');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=colors[Math.floor(Math.random()*colors.length)];c.style.animationDelay=Math.random()*.8+'s';c.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(c);setTimeout(()=>c.remove(),4500);}}
+let musicStarted=false;
+function playMusic(){
+ confetti();
+ document.getElementById('vinyl').classList.add('playing');
+ document.getElementById('music-player').style.display='block';
+ const frame=document.getElementById('music-frame');
+ if(!musicStarted){
+   frame.src='https://open.spotify.com/embed/track/6X0XdIcgwfVa9orJnDMQB0?utm_source=generator&theme=0';
+   musicStarted=true;
+ }
+ document.getElementById('music-status').textContent='🎉 O Spotify está pronto! Toque em reproduzir no player para ouvir a música.';
+ document.getElementById('pause').disabled=false;
+}
+function pauseMusic(){
+ const frame=document.getElementById('music-frame');
+ frame.src='about:blank';
+ document.getElementById('music-player').style.display='none';
+ document.getElementById('vinyl').classList.remove('playing');
+ document.getElementById('music-status').textContent='Player fechado. Clique no vinil ou em “Tocar música” para abrir novamente.';
+ document.getElementById('pause').disabled=true;
+ musicStarted=false;
+}
+document.getElementById('vinyl').addEventListener('click',playMusic);document.getElementById('play').addEventListener('click',playMusic);
+document.getElementById('pause').addEventListener('click',pauseMusic);
+const words=[
+{answer:'SAYYOULOVEME',dir:'h',r:2,c:8,clue:'Uma música. Você disse que “será para sempre a música da sua vida.”'},
+{answer:'NUTRIENTES',dir:'h',r:16,c:7,clue:'Substâncias essenciais para uma alimentação equilibrada. “Nada de gula, somente o necessário”.'},
+{answer:'FRAQUEZA',dir:'v',r:12,c:8,clue:'Redução de força física. Eu te causo quando você me vê, e que não adianta treinar para ficar forte.'},
+{answer:'ESTRELASTORTAS',dir:'h',r:7,c:0,clue:'Um livro, o seu favorito.'},
+{answer:'SAOPAULO',dir:'h',r:14,c:4,clue:'Estado do Brasil, e onde vamos nos encontrar.'},
+{answer:'CROSSWORDS',dir:'h',r:9,c:10,clue:'Melhor fanfic de todos os tempos. A nossa favorita!'},
+{answer:'LOQUINHA',dir:'v',r:7,c:5,clue:'O maior e melhor shipper do ano. O casal mais lindo visto na TV brasileira.'},
+{answer:'VEGETARIANA',dir:'v',r:6,c:0,clue:'Um estilo de vida e prática alimentar. O que você é.'},
+{answer:'COCHILAR',dir:'v',r:9,c:10,clue:'Uma arte que você domina bastante e faz com frequência. É ainda melhor quando feito após o almoço.'},
+{answer:'JIUJITSU',dir:'v',r:2,c:2,clue:'Esporte de combate. Faz parte da sua rotina e estou ansiosa para aprender.'},
+{answer:'TOFU',dir:'v',r:7,c:8,clue:'Alimento de origem vegetal. Você odeia e acha fedido.'},
+{answer:'FLAMENGO',dir:'v',r:0,c:9,clue:'Time carioca. O pior de todos (sob a minha visão), mas que você ama.'},
+{answer:'CALOR',dir:'v',r:6,c:12,clue:'Temperatura elevada apreciada por você.'},
+{answer:'VITORIA',dir:'v',r:1,c:6,clue:'Capital do estado onde eu moro, que coincidentemente é o seu nome.'},
+{answer:'DESCONCENTRAR',dir:'h',r:4,c:8,clue:'A perda da concentração mental. Que ambas sofreram em alguns momentos da conversa.'}
+];
+const board=document.getElementById('cross-board'), clueList=document.getElementById('clue-list');
+const H=20,W=21, letters=new Map(), starts=new Map(), cells=new Map();
+function posKey(r,c){return r+','+c}
+words.forEach((w,i)=>{starts.set(posKey(w.r,w.c),i);for(let j=0;j<w.answer.length;j++){let r=w.r+(w.dir==='v'?j:0),c=w.c+(w.dir==='h'?j:0),k=posKey(r,c);if(!letters.has(k))letters.set(k,[]);letters.get(k).push({word:i,index:j});}});
+board.style.gridTemplateColumns=`repeat(${W}, auto)`;
+for(let r=0;r<H;r++)for(let c=0;c<W;c++){let k=posKey(r,c);let cell=document.createElement('div');cell.className='cross-cell'+(letters.has(k)?'':' block');if(letters.has(k)){let n=starts.get(k);if(n!==undefined){let num=document.createElement('span');num.className='num';num.textContent=n+1;cell.appendChild(num)}let input=document.createElement('input');input.maxLength=1;input.autocomplete='off';input.autocapitalize='characters';input.spellcheck=false;input.setAttribute('aria-label',`Linha ${r+1}, coluna ${c+1}`);input.dataset.r=r;input.dataset.c=c;input.addEventListener('input',()=>{input.value=normalize(input.value).slice(-1);if(input.value){const active=selectedWord===null?0:selectedWord;const w=words[active];let idx=(w.dir==='h'?c-w.c:r-w.r);let nr=r+(w.dir==='v'?1:0),nc=c+(w.dir==='h'?1:0);if(idx>=0&&idx<w.answer.length-1){let next=document.querySelector(`.cross-cell input[data-r="${nr}"][data-c="${nc}"]`);if(next)next.focus();}clearMarksOnly();markWord(selectedWord);}});input.addEventListener('focus',()=>{const matches=letters.get(k)||[];let wi=matches.find(x=>x.word===selectedWord)?.word??matches[0]?.word;if(wi!==undefined){selectedWord=wi;activateClue(wi);}});input.addEventListener('keydown',e=>{let dr=0,dc=0;if(e.key==='ArrowRight')dc=1;else if(e.key==='ArrowLeft')dc=-1;else if(e.key==='ArrowDown')dr=1;else if(e.key==='ArrowUp')dr=-1;else if(e.key==='Backspace'&&!input.value){let prev=Array.from(document.querySelectorAll('.cross-cell input')).find(x=>+x.dataset.r===r-dr&&+x.dataset.c===c-dc);if(prev){e.preventDefault();prev.focus();}}if(dr||dc){e.preventDefault();let next=document.querySelector(`.cross-cell input[data-r="${r+dr}"][data-c="${c+dc}"]`);if(next)next.focus();}});cell.appendChild(input);cells.set(k,cell);}board.appendChild(cell)}
+let selectedWord=0;
+words.forEach((w,i)=>{let b=document.createElement('button');b.className='clue';b.innerHTML=`<b>${i+1}</b><span>${w.clue}</span>`;b.addEventListener('click',()=>{selectedWord=i;activateClue(i);let first=document.querySelector(`.cross-cell input[data-r="${w.r}"][data-c="${w.c}"]`);if(first)first.focus();});clueList.appendChild(b)});
+function clearMarksOnly(){document.querySelectorAll('.cross-cell.selected').forEach(c=>c.classList.remove('selected'));}
+function markWord(i){if(i===null||i===undefined)return;let w=words[i];for(let j=0;j<w.answer.length;j++){let r=w.r+(w.dir==='v'?j:0),c=w.c+(w.dir==='h'?j:0);let el=cells.get(posKey(r,c));if(el)el.classList.add('selected');}}
+function activateClue(i){selectedWord=i;document.querySelectorAll('.clue').forEach((b,j)=>b.classList.toggle('active',i===j));clearMarksOnly();markWord(i);}
+function normalize(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+activateClue(0);
+document.getElementById('check').addEventListener('click',()=>{let count=0;words.forEach((w,i)=>{let val='';for(let j=0;j<w.answer.length;j++){let r=w.r+(w.dir==='v'?j:0),c=w.c+(w.dir==='h'?j:0);val+=document.querySelector(`.cross-cell input[data-r="${r}"][data-c="${c}"]`).value||'';}let ok=normalize(val)===w.answer;if(ok)count++;});const f=document.getElementById('feedback');f.textContent=count+' de '+words.length+' palavras corretas.';const done=count===words.length;document.getElementById('secret').classList.toggle('show',done);if(done){confetti();f.textContent='Tudo certinho! Você desbloqueou a mensagem final. 💚';}});
+document.getElementById('reset').addEventListener('click',()=>{document.querySelectorAll('.cross-cell input').forEach(el=>el.value='');document.getElementById('feedback').textContent='';document.getElementById('secret').classList.remove('show');activateClue(0);});
+</script>
+</body>
+</html>
